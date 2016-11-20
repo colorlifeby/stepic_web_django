@@ -3,12 +3,12 @@ from django.contrib.auth.models import User
 
 class QuestionManager(models.Manager):
         def new():
-            xyz=1
+            xyz
         def popular():
-            xyz=2
+            xyz
 
 class Question(models.Model):
-	objects = QuestionManager()
+    objects = QuestionManager()
     title = models.CharField(max_length=255)
     text = models.TextField()
     added_at = models.DateTimeField(auto_now_add=True)

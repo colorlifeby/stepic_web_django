@@ -11,5 +11,5 @@ sudo /etc/init.d/gunicorn restart
 sudo /etc/init.d/mysql restart
 sudo mysql -uroot -e "DROP DATABASE IF EXISTS ask"
 sudo mysql -uroot -e "CREATE DATABASE ask"
-sudo mysql -uroot -e "CREATE USER 'askuser'@'localhost' IDENTIFIED BY '11111'"
+#sudo mysql -uroot -e "CREATE USER 'askuser'@'localhost' IDENTIFIED BY '11111'"
 sudo mysql -uroot -e "GRANT ALL PRIVILEGES ON ASK.* TO 'askuser'@'localhost' IDENTIFIED BY '11111'" 
