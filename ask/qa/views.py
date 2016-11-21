@@ -31,12 +31,19 @@ def paginate(request, qs):
 
 #---------------------------------------------------------------
 def question_list(request):
-    qs = Question.objects.all()
-    qs = qs.order_by('-added_at')
-    page, paginator = paginate(request, qs)
-    paginator.baseurl = reverse('question_list') + '?page='
-    return render(request, 'list.html', {
-        'questions': page.object_list,
-        'page': page,
-        'paginator': paginator,
-    }) 
+    try:
+        page = int(request.GET.get("page"))
+    except ValueError:
+        page = 1
+    except TypeError:
+        page = 1 
+    # qs = Question.objects.all()
+    # qs = qs.order_by('-id')
+    # page, paginator = paginate(request, qs)
+    # paginator.baseurl = reverse('question_list') + '?page='
+    # return render(request, 'list.html', {
+    #     'questions': page.object_list,
+    #     'page': page,
+    #     'paginator': paginator,
+    # }) 
+    return HttpResponse('Question list page '+str(page))
