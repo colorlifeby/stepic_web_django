@@ -1,0 +1,19 @@
+<!DOCTYPE html> <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ask question</title>
+    </head>
+    <body>
+      <p>Your answer:</p>
+      <form method="POST" action="/ask/">
+        <fieldset>
+          {% csrf_token %}
+          {% for field in form %}
+          <div>{{ field }}</div>
+          {% endfor %}
+        </fieldset> 
+        <button type="submit">Save</button>
+      </form>
+      <div><a href="/">go to main</a></div>
+     </body>
+</html> 

@@ -57,3 +57,16 @@ def question_detail(request, ID,):
     return render(request, 'question.html', {'question': questionObj,
                                              'answers':answers,
                                              'form': form, }) 
+
+
+def question_ask(request):
+    if request.method == "POST":
+       form = AskForm(request.POST)
+       if form.is_valid():
+          form._user = 1
+          questionObj = form.save()
+          return HttpResponseRedirect(questionObj.get_url())
+    else:
+       form = AskForm()
+    return render(request, 'ask.html', {'form': form, })
+
