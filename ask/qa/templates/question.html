@@ -1,0 +1,15 @@
+<!DOCTYPE html> <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Question #{{ question.id }}</title>
+    </head>
+    <body>
+      Question: <br>
+      <p> Title - {{ question.title }} </p>
+      <p> Text - {{ question.text }} </p>
+      Answers:<br>
+      {% for answer in answers %}
+      <p> Text = {{ answer.text }} </p>
+      {% endfor %}
+    </body>
+</html> 

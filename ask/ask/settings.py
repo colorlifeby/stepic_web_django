@@ -52,6 +52,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ask.urls'
 
+# for stepik
+
+# TEMPLATE_DIRS = (
+#    '/home/box/web/ask/qa/templates',
+# ) 
+
+# for local
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
