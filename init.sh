@@ -1,4 +1,5 @@
 # nginx
+#sudo rm -v /etc/nginx/sites-available/default
 sudo ln -sf /home/box/web/etc/box.conf  /etc/nginx/conf.d
 sudo /etc/init.d/nginx restart
 

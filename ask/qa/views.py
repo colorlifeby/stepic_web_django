@@ -14,7 +14,7 @@ def question_list(request):
         page = 1
    except TypeError:
         page = 1
-   questions = Question.objects.all().order_by('-id')
+   questions = Question.objects.all().order_by('-added_at')
    paginator = Paginator(questions, 10)
    page = paginator.page(page)
    return render(request, 'qlist.html',
