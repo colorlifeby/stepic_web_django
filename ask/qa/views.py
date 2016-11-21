@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from qa.models import Question
 
 #--------------------------------------------------------------------
-def test(request, *args, **kwargs): from django.contrib.auth 
+def test(request, *args, **kwargs):
     return HttpResponse('UNDER CONSTRUCTION! COMING SOON!')
 
 
