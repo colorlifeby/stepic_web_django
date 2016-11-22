@@ -3,6 +3,7 @@ from django.http import Http404,HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
 
 from qa.models import Question, Answer
+from qa.forms import AnswerForm, AskForm
 
 def test(request, *args, **kwargs):
     return HttpResponse('UNDER CONSTRUCTION! COMING SOON!')
@@ -41,6 +42,18 @@ def popular(request):
 
 
 def question_detail(request, ID,):
-    question = get_object_or_404(Question, pk=ID)
-    answers = Answer.objects.filter(question = question)
-    return render(request, 'question.html', {'question': question, 'answers':answers, })
+    questionObj = get_object_or_404(Question, pk=ID)
+    answers = Answer.objects.filter(question = questionObj)
+
+    if request.method == "POST":
+       form = AnswerForm(request.POST)
+       if form.is_valid():
+          form._user = 1
+          answer = form.save()
+          return HttpResponseRedirect(questionObj.get_url())
+    else:
+       form = AnswerForm(initial={'question': questionObj.id})
+
+    return render(request, 'question.html', {'question': questionObj,
+                                             'answers':answers,
+                                             'form': form, }) 

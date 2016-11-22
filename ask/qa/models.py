@@ -1,11 +1,12 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib.auth.models import User
 
 class QuestionManager(models.Manager):
         def new():
-            xyz
+            pass
         def popular():
-            xyz
+            pass
 
 class Question(models.Model):
     # objects = QuestionManager()
@@ -19,7 +20,7 @@ class Question(models.Model):
     def get_url(self):
         return "/question/{}/".format(self.id)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
 
@@ -29,5 +30,5 @@ class Answer(models.Model):
     question = models.ForeignKey(Question)
     author = models.ForeignKey(User)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.text

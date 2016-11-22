@@ -11,11 +11,11 @@ sudo /etc/init.d/gunicorn restart
 # mysql
 sudo /etc/init.d/mysql restart
 mysql -uroot -e "DROP DATABASE IF EXISTS ask"
-mysql -uroot -e "CREATE DATABASE ask"
+mysql -uroot -e "CREATE DATABASE ask CHARACTER SET utf8 COLLATE utf8_general_ci"
 # mysql -uroot -e "CREATE USER 'askuser'@'localhost' IDENTIFIED BY '11111'"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON ask.* TO 'askuser'@'localhost';"
 
-#sudo python /home/box/web/ask/manage.py syncdb
-sudo python /home/box/web/ask/manage.py makemigrations qa
-sudo python /home/box/web/ask/manage.py migrate
+sudo python /home/box/web/ask/manage.py syncdb
+#sudo python /home/box/web/ask/manage.py makemigrations qa
+#sudo python /home/box/web/ask/manage.py migrate
 

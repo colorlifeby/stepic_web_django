@@ -5,11 +5,27 @@
     </head>
     <body>
       Question: <br>
-      <p> Title - {{ question.title }} </p>
-      <p> Text - {{ question.text }} </p>
-      Answers:<br>
+      <h1>{{ question.title }}</h1>
+      <p>{{ question.text }}</p>
+      <br>
+      Answers:<hr>
+      <ul>
       {% for answer in answers %}
-      <p> Text = {{ answer.text }} </p>
+      <p> <li>{{ answer.added_at   }},{{ answer.author.username }}:<br>{{ answer.text }}</li> </p>
       {% endfor %}
+      </ul>
+      <hr>
+      <p>Your answer:</p>
+      <form method="POST" action="{{ question.get_url  }}">
+        <fieldset>
+          {% csrf_token %}
+          {% for field in form %}
+          <div>{{ field }}</div>
+          {% endfor %}
+        </fieldset> 
+        <button type="submit">Save</button>
+      </form>
+      <div><a href="/">go to main</a></div>
+ 
     </body>
 </html> 
