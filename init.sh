@@ -1,11 +1,11 @@
 # nginx
-#sudo rm -v /etc/nginx/sites-available/default
+sudo rm -v /etc/nginx/sites-available/default
 sudo ln -sf /home/box/web/etc/box.conf  /etc/nginx/conf.d
 sudo /etc/init.d/nginx restart
 
 # gunicorn
 sudo ln -sf /home/box/web/etc/hello.py /etc/gunicorn.d/hello.py
-sudo ln -sf /home/box/web/etc/wsgi.py /etc/gunicorn.d/wsgi.py 
+sudo ln -sf /home/box/web/etc/wsgi.py /etc/gunicorn.d/wsgi.py
 sudo /etc/init.d/gunicorn restart
 
 # mysql
@@ -15,7 +15,7 @@ mysql -uroot -e "CREATE DATABASE ask CHARACTER SET utf8 COLLATE utf8_general_ci"
 # mysql -uroot -e "CREATE USER 'askuser'@'localhost' IDENTIFIED BY '11111'"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON ask.* TO 'askuser'@'localhost';"
 
-#sudo python /home/box/web/ask/manage.py syncdb
-sudo python /home/box/web/ask/manage.py makemigrations qa
-sudo python /home/box/web/ask/manage.py migrate
+sudo python /home/box/web/ask/manage.py syncdb
+#sudo python /home/box/web/ask/manage.py makemigrations qa
+#sudo python /home/box/web/ask/manage.py migrate
 
